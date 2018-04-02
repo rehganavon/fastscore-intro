@@ -1,0 +1,12 @@
+{
+  "Version": "1.2",
+  "Loop": false,
+  "Transport": {
+    "Type": "kafka",
+    "BootstrapServers": ["172.17.0.1:9092"],
+    "Topic": "input"
+  },
+  "Envelope": null,
+  "Encoding": "json",
+  "Schema": {"$ref":"gbm_input"}
+}

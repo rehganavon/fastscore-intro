@@ -1,7 +1,7 @@
 version: '2'
 services:
   dashboard:
-    image: fastscore/dashboard:dev
+    image: fastscore/dashboard:1.6.1
     network_mode: "bridge"
     ports:
         - "8000:8000"
@@ -11,7 +11,7 @@ services:
       CONNECT_PREFIX: https://172.17.0.1:8001
 
   connect:
-    image: fastscore/connect:dev
+    image: fastscore/connect:1.6.1
     network_mode: "bridge"
     ports:
         - "8001:8001"
@@ -19,7 +19,7 @@ services:
     tty: true
 
   engine-1:
-    image: fastscore/engine:dev
+    image: fastscore/engine:1.6.1
     network_mode: "bridge"
     ports:
         - "8003:8003"
@@ -31,7 +31,7 @@ services:
         CONNECT_PREFIX: https://172.17.0.1:8001
 
   engine-2:
-    image: fastscore/engine:dev
+    image: fastscore/engine:1.6.1
     network_mode: "bridge"
     ports:
         - "8004:8003"
@@ -43,7 +43,7 @@ services:
         CONNECT_PREFIX: https://172.17.0.1:8001
 
   engine-3:
-    image: fastscore/engine:dev
+    image: fastscore/engine:1.6.1
     network_mode: "bridge"
     ports:
         - "8005:8003"
@@ -53,7 +53,7 @@ services:
         CONNECT_PREFIX: https://172.17.0.1:8001
 
   engine-4:
-    image: fastscore/engine:dev
+    image: fastscore/engine:1.6.1
     network_mode: "bridge"
     ports:
         - "8006:8003"
@@ -63,13 +63,13 @@ services:
         CONNECT_PREFIX: https://172.17.0.1:8001
 
   database:
-    image: fastscore/model-manage-mysql:dev
+    image: fastscore/model-manage-mysql:1.6.1
     network_mode: "bridge"
     ports:
         - "3306:3306"
 
   model-manage:
-    image: fastscore/model-manage:dev
+    image: fastscore/model-manage:1.6.1
     network_mode: "bridge"
     ports:
         - "8002:8002"

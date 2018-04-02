@@ -1,0 +1,13 @@
+{
+  "Transport": {
+    "Type": "file",
+    "Path": "/root/data/input_data.jsons"
+  },
+  "Envelope": {
+    "Type":"delimited"
+  },
+  "Encoding": "json",
+  "Schema": {
+    "$ref":"gbm_input"
+  }
+}
