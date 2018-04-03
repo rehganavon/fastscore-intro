@@ -8,7 +8,7 @@ fastscore config set config.yml
 sleep 5
 
 sudo docker-compose exec engine-1 pip install scikit-learn==0.18.1
-sudo docker-compose exec engine-1 pip install pandas==0.19.2
+sudo docker-compose exec engine-1 pip install pandas==0.19.0
 
 fastscore model add gbm_python ./models/python_gbm.py
 
