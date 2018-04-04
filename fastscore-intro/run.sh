@@ -1,14 +1,14 @@
 #!/bin/bash
-sudo docker-compose -f kafka-compose.yml up -d
-sudo docker-compose up -d
+docker-compose -f kafka-compose.yml up -d
+docker-compose up -d
 sleep 15 # wait for things to get set up
 
 fastscore connect https://localhost:8000
 fastscore config set config.yml
 sleep 5
 
-sudo docker-compose exec engine-1 pip install scikit-learn==0.18.1
-sudo docker-compose exec engine-1 pip install pandas==0.19.0
+docker-compose exec engine-1 pip install scikit-learn==0.18.1
+docker-compose exec engine-1 pip install pandas==0.19.0
 
 fastscore model add gbm_python ./models/python_gbm.py
 
