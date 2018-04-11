@@ -1,30 +1,27 @@
 fastscore:
   fleet:
     - api: model-manage
-      host: host01
+      host: model-manage
       port: 8002
     - api: engine
-      host: host01
+      host: engine-1
       port: 8003
     - api: engine
-      host: host01
+      host: engine-2
       port: 8004
     - api: engine
-      host: host01
+      host: engine-3
       port: 8005
     - api: engine
-      host: host01
+      host: engine-4
       port: 8006
 
   db:
     type: mysql
-    host: host01
+    host: database
     port: 3306
     username: root
     password: root
 
   pneumo:
-    type: kafka
-    bootstrap:
-      - host01:9092
-    topic: notify
+    type: rest
