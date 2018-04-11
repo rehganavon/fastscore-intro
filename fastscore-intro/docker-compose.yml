@@ -2,81 +2,118 @@ version: '2'
 services:
   dashboard:
     image: fastscore/dashboard:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8000:8000"
+    networks:
+      - fastscore_net
     stdin_open: true
+    ports:
+      - "8000:8000"
     tty: true
     environment:
-      CONNECT_PREFIX: https://172.17.0.1:8001
+      CONNECT_PREFIX: https://connect:8001
+      STRICT_SSL: "false"
+    depends_on:
+      - connect
 
   connect:
     image: fastscore/connect:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8001:8001"
+    networks:
+      - fastscore_net
     stdin_open: true
     tty: true
+    expose:
+      - "8001"
+    ports:
+      - "8001:8001"
+    depends_on:
+      - database
 
   engine-1:
-    image: fastscore/engine:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8003:8003"
+    image: fastscore/engine-x:1.6.1
+    networks:
+      - fastscore_net
     stdin_open: true
     tty: true
+    ports:
+      - "8003:8003"
     volumes:
-        - ./data:/root/data
+      - ./data-1:/root/data
     environment:
-        CONNECT_PREFIX: https://172.17.0.1:8001
-
+        CONNECT_PREFIX: https://connect:8001
+    depends_on:
+      - connect
+      
   engine-2:
-    image: fastscore/engine:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8004:8003"
+    image: fastscore/engine-x:1.6.1
+    networks:
+      - fastscore_net
     stdin_open: true
     tty: true
+    ports:
+      - "8004:8003"
     volumes:
-        - ./data:/root/data
+      - ./data-1:/root/data
     environment:
-        CONNECT_PREFIX: https://172.17.0.1:8001
+        CONNECT_PREFIX: https://connect:8001
+    depends_on:
+      - connect
 
   engine-3:
-    image: fastscore/engine:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8005:8003"
+    image: fastscore/engine-x:1.6.1
+    networks:
+      - fastscore_net
     stdin_open: true
     tty: true
+    ports:
+      - "8005:8003"
+    volumes:
+      - ./data-1:/root/data
     environment:
-        CONNECT_PREFIX: https://172.17.0.1:8001
+        CONNECT_PREFIX: https://connect:8001
+    depends_on:
+      - connect
 
   engine-4:
-    image: fastscore/engine:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8006:8003"
+    image: fastscore/engine-x:1.6.1
+    networks:
+      - fastscore_net
     stdin_open: true
     tty: true
+    ports:
+      - "8006:8003"
+    volumes:
+      - ./data-1:/root/data
     environment:
-        CONNECT_PREFIX: https://172.17.0.1:8001
+        CONNECT_PREFIX: https://connect:8001
+    depends_on:
+      - connect
 
   database:
     image: fastscore/model-manage-mysql:1.6.1
-    network_mode: "bridge"
+    networks:
+      - fastscore_net
     ports:
-        - "3306:3306"
-
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+ 
   model-manage:
     image: fastscore/model-manage:1.6.1
-    network_mode: "bridge"
-    ports:
-        - "8002:8002"
+    networks:
+      - fastscore_net
     stdin_open: true
     tty: true
+    ports:
+      - "8002:8002"
     depends_on:
       - connect
       - database
     environment:
-      CONNECT_PREFIX: https://172.17.0.1:8001
+      CONNECT_PREFIX: https://connect:8001
+
+networks:
+  fastscore_net:
+    driver: bridge
+
+volumes:
+  db:
+    external: true
