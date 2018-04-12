@@ -3,7 +3,7 @@ docker-compose -f kafka-compose.yml up -d
 docker-compose up -d
 sleep 15 # wait for things to get set up
 
-fastscore connect https://host01:8000
+fastscore connect https://host01:80
 fastscore config set config.yml
 sleep 5
 
