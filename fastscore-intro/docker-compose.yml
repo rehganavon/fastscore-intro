@@ -28,7 +28,7 @@ services:
       - database
 
   engine-1:
-    image: fastscore/engine-x:1.6.1
+    image: georgek42/engine-gbm
     networks:
       - fastscore_net
     stdin_open: true
@@ -43,43 +43,13 @@ services:
       - connect
       
   engine-2:
-    image: fastscore/engine-x:1.6.1
+    image: georgek42/engine-gbm
     networks:
       - fastscore_net
     stdin_open: true
     tty: true
     ports:
       - "8004:8003"
-    volumes:
-      - ./data-1:/root/data
-    environment:
-        CONNECT_PREFIX: https://connect:8001
-    depends_on:
-      - connect
-
-  engine-3:
-    image: fastscore/engine-x:1.6.1
-    networks:
-      - fastscore_net
-    stdin_open: true
-    tty: true
-    ports:
-      - "8005:8003"
-    volumes:
-      - ./data-1:/root/data
-    environment:
-        CONNECT_PREFIX: https://connect:8001
-    depends_on:
-      - connect
-
-  engine-4:
-    image: fastscore/engine-x:1.6.1
-    networks:
-      - fastscore_net
-    stdin_open: true
-    tty: true
-    ports:
-      - "8006:8003"
     volumes:
       - ./data-1:/root/data
     environment:
