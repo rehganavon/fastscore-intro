@@ -9,12 +9,6 @@ fastscore:
     - api: engine
       host: engine-2
       port: 8004
-    - api: engine
-      host: engine-3
-      port: 8005
-    - api: engine
-      host: engine-4
-      port: 8006
 
   db:
     type: mysql
