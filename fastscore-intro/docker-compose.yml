@@ -36,7 +36,7 @@ services:
     ports:
       - "8003:8003"
     volumes:
-      - ./data-1:/root/data
+      - ./data:/root/data
     environment:
         CONNECT_PREFIX: https://connect:8001
     depends_on:
@@ -51,7 +51,7 @@ services:
     ports:
       - "8004:8003"
     volumes:
-      - ./data-1:/root/data
+      - ./data:/root/data
     environment:
         CONNECT_PREFIX: https://connect:8001
     depends_on:
