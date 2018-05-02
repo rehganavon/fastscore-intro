@@ -26,5 +26,7 @@ fastscore stream add kafka_out ./streams/kafka_output.json
 fastscore schema add gbm_input ./schemas/gbm_input.avsc
 fastscore schema add gbm_output ./schemas/gbm_output.avsc
 
+STR="Done"
+
 exit 0
 
