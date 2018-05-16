@@ -28,7 +28,7 @@ services:
       - database
 
   engine-1:
-    image: georgek42/engine-gbm
+    image: georgek42/engine-gbm:new
     networks:
       - fastscore_net
     stdin_open: true
