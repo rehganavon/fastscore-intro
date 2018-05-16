@@ -43,7 +43,7 @@ services:
       - connect
       
   engine-2:
-    image: georgek42/engine-gbm
+    image: georgek42/engine-gbm:new
     networks:
       - fastscore_net
     stdin_open: true
