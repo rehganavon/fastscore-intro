@@ -1,8 +1,7 @@
 #!/bin/bash
 echo "Bringing up FastScore containers..."
-docker-compose -f kafka-compose.yml up -d
 docker-compose up -d
-sleep 10 # wait for things to get set up
+sleep 5 # wait for things to get set up
 
 echo "Connecting to Dashboard and Configuring FastScore..."
 fastscore connect https://host01:80
