@@ -7,8 +7,7 @@ services:
     ports:
       - "2181:2181"
   kafka:
-    image: wurstmeister/kafka
-    network_mode: "bridge"
+    image: fastscore/kafka
     ports:
       - "9092:9092"
     environment:
