@@ -6,7 +6,7 @@ sleep 5 # wait for things to get set up
 echo "Connecting to Dashboard and Configuring FastScore..."
 fastscore connect https://host01:80
 fastscore config set config.yml
-sleep 5
+sleep 10
 
 echo "Adding Models to FastScore..."
 
