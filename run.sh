@@ -8,6 +8,9 @@ fastscore connect https://host01:80 -wait
 fastscore config set config.yml
 #sleep 10
 
+echo "FastScore Status..."
+fastscore fleet -wait
+
 echo "Adding Models to FastScore..."
 
 fastscore model add gbm_python ./models/python_gbm.py -wait
