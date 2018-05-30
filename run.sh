@@ -5,7 +5,7 @@ docker-compose up -d
 
 echo "Connecting to Dashboard and Configuring FastScore..."
 fastscore connect https://host01:80 -wait
-fastscore config set config.yml
+fastscore config set config.yml -wait
 #sleep 10
 
 echo "FastScore Status..."
@@ -13,7 +13,7 @@ fastscore fleet -wait
 
 echo "Adding Models to FastScore..."
 
-fastscore model add gbm_python ./models/python_gbm.py -wait
+fastscore model add gbm_python ./models/python_gbm.py
 
 fastscore attachment upload gbm_python ./attachments/attachment.tar.gz
 
