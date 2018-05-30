@@ -6,7 +6,7 @@ docker-compose up -d
 echo "Connecting to Dashboard and Configuring FastScore..."
 fastscore connect https://host01:80 -wait
 fastscore config set config.yml -wait
-sleep 10
+sleep 5
 
 echo "Adding Models to FastScore..."
 
