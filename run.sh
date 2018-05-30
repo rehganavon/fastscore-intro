@@ -1,16 +1,16 @@
 #!/bin/bash
 echo "Bringing up FastScore containers..."
 docker-compose up -d
-sleep 5 # wait for things to get set up
+#sleep 5 wait for things to get set up
 
 echo "Connecting to Dashboard and Configuring FastScore..."
-fastscore connect https://host01:80
+fastscore connect https://host01:80 -wait
 fastscore config set config.yml
 sleep 10
 
 echo "Adding Models to FastScore..."
 
-fastscore model add gbm_python ./models/python_gbm.py
+fastscore model add gbm_python ./models/python_gbm.py -wait
 
 fastscore attachment upload gbm_python ./attachments/attachment.tar.gz
 
