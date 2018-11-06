@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "Bringing up FastScore containers..."
-docker-compose up -d
-#sleep 5 wait for things to get set up
+docker-compose up -d -wait
 
 echo "Connecting to Dashboard and Configuring FastScore..."
 fastscore connect https://host01:443 -wait
