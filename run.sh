@@ -4,7 +4,7 @@ docker-compose up -d
 #sleep 5 wait for things to get set up
 
 echo "Connecting to Dashboard and Configuring FastScore..."
-fastscore connect https://host01:80 -wait
+fastscore connect https://host01:443 -wait
 fastscore config set config.yml -wait
 sleep 5
 
