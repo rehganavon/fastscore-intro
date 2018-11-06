@@ -56,11 +56,6 @@ services:
         CONNECT_PREFIX: https://connect:8001
     depends_on:
       - connect
-      
-  kafka:
-    image: fastscore/kafka
-    ports:
-      - "9092:9092"
 
   database:
     image: fastscore/model-manage-mysql:1.6.1
